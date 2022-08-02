@@ -82,7 +82,7 @@ return (
     <>
         <div className="container" style={myStyle}>
             {/* this style={myStyle} is an object */}
-            <h1 className='my-3'>About us</h1>
+            <h1 className='my-3'>About us we are talking</h1>
             <div className="accordion accordion-flush" id="accordionFlushExample" style={myStyle}>
                 <div className="accordion-item">
                     <h2 className="accordion-header" id="flush-headingOne">
