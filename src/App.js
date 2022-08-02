@@ -11,7 +11,7 @@ function App() {
   // essentially i want all of the controls from the app.js so i am typing this dark mode inside the app.js
   const [mode,setMode] = useState("dark")
   //this is a state variable which will tell us whether the dark mode is enabled or not mode is storing the value "light" inside the variable (mode), we pass this variable to navbar which will passs it as a prop to the Navbar.js
-  
+
   return (
   <>
     {/*here i am passing props to a component ki mera title yeh ho ,,,, “Props” is a special keyword in React, which stands for properties and is being used for passing data from one component to another.*/}
@@ -37,3 +37,6 @@ function App() {
   ); 
 }
 export default App;
+
+
+
