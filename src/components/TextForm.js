@@ -84,7 +84,7 @@ export default function TextForm(props) {
 
   return (
     <>
-      <div className="container">
+      <div className="container" style={{color:props.mode==="dark"?"white":"black"}}>
         {/* added className in the video--Adding more Logic to TextUtils | Complete React Course in Hindi #8 */}
         <h1>{props.heading}</h1>
         <div className="mb-3">
@@ -93,13 +93,19 @@ export default function TextForm(props) {
           {/* <label for="myBox" className="form-label">Example textarea</label> */}
           {/* we are removing the above text label as it's not looking too good */}
 
-          <textarea className="form-control" value={text} onChange={handleOnChange} id="myBox" rows="8"></textarea>
+          <textarea className="form-control" value={text} onChange={handleOnChange} style={{backgroundColor:props.mode==="dark"?"grey":"white",color:props.mode==="dark"?"white":"black"}} id="myBox" rows="8"></textarea>
           
-        {/* onChange is an evevt in html (jsx) which will run when there is change */}
+          {/*
+          
+          style={{}} 2 curly braces are used so that we can write js inside and a block has been created inside the outer curly braces as we want to make an object , an object is a set of key value pairs {key:value,key:value,key:value}
 
-          {/* note - by default react variables ko check nahi karti hai after clicking on the button due to the event mentioned in button click  a function runs called the handleUpClick function which will update the text variable using setText */}
+          onChange is an evevt in html (jsx) which will run when there is change
+
+          note - by default react variables ko check nahi karti hai after clicking on the button due to the event mentioned in button click  a function runs called the handleUpClick function which will update the text variable using setText
           
-          {/* we can't change text coz the value of text variable is fixed and , on change event hi ab bacha sakta hai , kyonki wohi run hoga jab change hoga textbox mein */}
+          we can't change text coz the value of text variable is fixed and , on change event hi ab bacha sakta hai , kyonki wohi run hoga jab change hoga textbox mein 
+          
+          */}
 
           {/* the handleOnChange function will help us now */}
           {/* this funtion will run when there is change in the textbox */}
@@ -157,9 +163,9 @@ export default function TextForm(props) {
         <button className="btn btn-primary mx-1" onClick={handleExtraSpaces}>Click to remove extraSpaces</button>
         {/* Exercise 1: Solutions + Shoutouts | Complete React Course in Hindi #11 */}
 
-      </div>
+      </div >
       {/*added the second div in -- Adding more Logic to TextUtils | Complete React Course in Hindi #8 */}
-      <div className="container my-3">
+      <div className="container my-3" style={{color:props.mode==="dark"?"white":"black"}}>
       {/* my-3 will add a margin of 3 */}
       <h1>Text Summary</h1>
       {/* in js every object has properties and methods 
@@ -176,7 +182,7 @@ export default function TextForm(props) {
       <p> {0.008*text.split(" ").length} mintes are required to read ut completely </p>
       <h2>Preview</h2>
       {/*The below variable contains all of the text written in the textbox*/}
-      <p>{text}</p>
+      <p>{text.lenght>0?text:"Enter something in the textbox above to preview here"}</p>
       </div>
     </>
   );

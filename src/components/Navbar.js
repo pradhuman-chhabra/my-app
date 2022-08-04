@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 export default function Navbar(props) {
   return (
     <>
-      <nav className={'navbar navbar-expand-lg navbar-&{props.mode} bg-&{props.mode}'}>
+      <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
         {/*  
         I have put the above bootstrap class in {} as i want to write javascript and i want to pass on props to the bootstrap which is now javascript as js allows us to pass props and by doing so we can alter the style -- color -- for dark mode here in bootstrap using js props
 
@@ -16,7 +16,8 @@ export default function Navbar(props) {
         
         We use props in React to pass data from one component to another (from a parent component to a child component(s)). Props is just a shorter way of saying properties. They are useful when you want the flow of data in your app to be dynamic.
 
-        &{}lagane ke baad i can use variables inside javascript
+        ${}lagane ke baad i can use props variables inside javascript
+
         */}
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
@@ -56,9 +57,36 @@ export default function Navbar(props) {
             */}
             {/*this will give us errors coz erlier it was just----<hr className="dropdown-divider">----now to prvent errors use / to end the tags which give errors----<hr className="dropdown-divider"/>*/}
            
-            <div className="form-check form-switch">
-              <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
-              <label className="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label> 
+            <div className={`form-check form-switch text-${props.mode==="light"?"dark":"light"}`}>
+            {/* this one is useful to make the text in the navbar change color as the navabar chages color
+            here props.mode is passed a prop
+
+            here terniary operator is useful it checks that props.mode===light then make it dark else light hi rakh do
+
+            ${props.mode==="light"?"dark":"light"}
+            
+            ${if--props.mode==="light" then make it"dark" else "light"} */}
+            
+            {/* Template literals are enclosed by backtick (`) characters instead of double or single quotes.
+
+            Along with having normal strings, template literals can also contain other parts called placeholders, which are 
+            embedded expressions delimited by a dollar sign and curly braces: ${expression}.
+            
+            {}--these are used to write js
+
+            ` backticks ` are used to make the full sentence into a string
+
+            placeholders mein ham variables likh sakte hai
+            
+            props.mode==="light"?"dark":"light" yeh pura ek variable hai
+              
+            Text-light class is used in bootstrap to make the text light colored */}
+
+            <input className="form-check-input" onClick={props.toggleMode} type="checkbox" role="switch" id="flexSwitchCheckDefault"/>
+
+            <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Enable DarkMode</label> 
+            {/* htmlFor is required instead of for */}
+            
             </div>
           
           </div>
