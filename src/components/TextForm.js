@@ -12,12 +12,16 @@ export default function TextForm(props) {
     // setText is a function so treat it like one
     let newText=text.toUpperCase();
     setText(newText);
+    props.showAlert("Succesfully converted to uppercase","success");
+    // since showAlert is a function we'll pass the message and the type to the fucntion and we'll get the string in the alert as output in return
   };
 
   const handleLoClick = () => {
     console.log("Lowercase was clicked" + text);
     let newText=text.toLowerCase();
     setText(newText);
+    props.showAlert("Succesfully converted to lowercase","success");
+
   };
 
   // Exercise 1: Enhancing TextUtils | Complete React Course in Hindi #9
@@ -26,6 +30,7 @@ export default function TextForm(props) {
     console.log("Lowercase was clicked" + text);
     let newText="";
     setText(newText);
+    props.showAlert("Succesfully cleared the text","success");
   };
 
   // Exercise 1: Solutions + Shoutouts | Complete React Course in Hindi #11
@@ -35,6 +40,7 @@ export default function TextForm(props) {
     text.select()
     // text.select() this function selects all the text in the text variable
     navigator.clipboard.writeText(text.value)
+    props.showAlert("Succesfully copy the text","success");
 
   }
 
@@ -43,6 +49,7 @@ export default function TextForm(props) {
   const handleExtraSpaces =()=>{
     let newText=text.split(/[ ]+/)
     setText(newText.join(" "))
+    props.showAlert("Succesfully removed the extra spaces from the text","success");
   }
   /* this is js regex (/[ ]+/) what this does is that it basically that ek ya ek se jyada space hai agr toh split karke array ban jayega aur jab array ban jayega tab usey combine kar denge ek pace ke saath (newText.join(" "))
   */
@@ -182,7 +189,7 @@ export default function TextForm(props) {
       <p> {0.008*text.split(" ").length} mintes are required to read ut completely </p>
       <h2>Preview</h2>
       {/*The below variable contains all of the text written in the textbox*/}
-      <p>{text.lenght>0?text:"Enter something in the textbox above to preview here"}</p>
+      <p>{text.length>0?text:"Enter something in the textbox above to preview here"}</p>
       </div>
     </>
   );
