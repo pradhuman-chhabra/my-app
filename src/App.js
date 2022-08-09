@@ -1,5 +1,5 @@
 import './App.css';
-// import About from './components/About';
+import About from './components/About';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 //we need to import the component from the diretory
@@ -7,6 +7,18 @@ import TextForm from './components/TextForm';
 import React,{useState} from 'react';
 // state variable use kar rhe ho toh yeh imposrt bhie karna hota hai
 import Alert from './components/Alert';
+
+
+// import React from "react";
+import {
+  BrowserRouter as Router,
+  // Switch,
+  Route,
+  Routes,
+  // Link
+} from "react-router-dom";
+// copied stuff from the react router website-- from the heading example 1 basic routing
+
 
 function App() {
 
@@ -56,13 +68,14 @@ function App() {
   }
   return (
   <>
+  <Router>
     {/*here i am passing props to a component ki mera title yeh ho ,,,, “Props” is a special keyword in React, which stands for properties and is being used for passing data from one component to another.*/}
 
     {/*<Navbar title="TextUtils" aboutText="About Textutils"/>*/}
     {/*<Navbar/>*/}
     {/*just to test a navbar when we Don't pass any value , we can set default values for props*/}
 
-    <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode}/>
+    <Navbar title="TextUtils" mode={mode} aboutText={"About"} toggleMode={toggleMode}/>
     {/* harry bola ek function banaunga aur ek prop bhejunga , toggleMode naam ka ek function banuanga aur yeh navbar ko bhej dunga */}
     {/* i will send togglemode function as a prop to the the navbar */}
     {/* props={whatever is passed as a prop} 
@@ -75,7 +88,37 @@ function App() {
     Alert.js has a capital A in the beginning so alert="this is and alert , mein lhs batata hai ki prop name kya hai as prop recieve props.alert naam se ho rha hai" */}
     <div className='container' my-3>
     {/* my-3 is a classname in botstrap used to give a  magin of 3 in the y axis*/}
-    <TextForm heading="Enter the text to analyze" showAlert={showAlert} mode={mode}/>
+
+    
+    {/*
+    <Switch>
+    /users --> Component 1
+    /users/home --> Component 2
+          <Route exact path="/about">
+            <About />
+          </Route>
+          <Route exact path="/">
+            <TextForm heading="Enter the text to analyze below" showAlert={showAlert} mode={mode}/>
+          </Route>
+          i pasted the textform inside the switch
+    </Switch>
+          Apparently switches are depreciated
+    
+    copied this switch from the react router website */}
+ 
+    {/* 
+    /users --> Component 1
+    /users/home --> Component 2 
+    exact is used to make sure react reads the exact page we want , suppose we want component 2 but it loads component 1 just coz the initial dirctory matches
+    */}
+    <Routes>
+        <Route exact path="/" element={<TextForm heading="Enter the text to analyze" showAlert={showAlert} mode={mode}/>} />
+        {/* i pasted the textform inside the switch */}
+        <Route exact path="/about" element={<About/>} />
+    </Routes>
+
+
+    {/* <TextForm heading="Enter the text to analyze" showAlert={showAlert} mode={mode}/> */}
     {/* here i passed show alert function to the textform components as a props as i want to show alert whenever buttons are clicked */}
     {/* i passes this heading thing as props to the compnent TextFrom
     jis jis ko mode transfer kiya gya hai wohan par dark mode ke changes aayenge*/}
@@ -83,6 +126,7 @@ function App() {
     <div>
       {/* <About/> */}
     </div>
+    </Router>
     </>
   ); 
 }
