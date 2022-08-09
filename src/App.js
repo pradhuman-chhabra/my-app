@@ -33,12 +33,24 @@ function App() {
       document.body.style.backgroundColor = 'white'
       showAlert('DarkMode has been enabled!',"success")
       // ab ham value pass kar rhe hai ek function ko toh string bhejna bhie chalega as we are passsing it to the function toh ham toh value hi bhejenge, aage uska kaam jaane woh object mein jaaye uski marzi
+      document.title="TextUtils-Light Mode"
+      //this will dynamically change the title of the website
     }
     else{
       setMode("dark")
       // setMode is a function toh function kaise use hote hai like --- setMode()
       document.body.style.backgroundColor = '#042743'
       showAlert('LightMode has been enabled!',"success")
+
+      // now if you want to create a website which shows up like an advertisement and title keeps on blinking you are in luck, reminder this is not a good user experience -- so we are commenting it out
+
+      // document.title="TextUtils-Dark Mode"
+      // setInterval(() => {
+      //   document.title="TextUtils-is Amazing"
+      // }, 2000);
+      // setInterval(() => {
+      //   document.title="Install TextUtils Now"        
+      // }, 1500);
     }
 
   }
